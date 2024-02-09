@@ -1,4 +1,4 @@
-#One-To-One Relationship
+#One-To-One Relationshipfk_passport
 CREATE DATABASE `TableRelations`;
 
 CREATE TABLE `passports`(
@@ -29,3 +29,10 @@ VALUES
 ('Yana',60200,101);
 
 #One-To-Many Relationship
+
+ALTER TABLE `tablerelations`.`people` 
+DROP FOREIGN KEY `fk_passport`;
+ALTER TABLE `tablerelations`.`people` 
+DROP INDEX `passport_id` ;
+;
+
