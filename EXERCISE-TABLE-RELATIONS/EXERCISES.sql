@@ -1,7 +1,5 @@
 #One-To-One Relationship
-
 CREATE DATABASE `TableRelations`;
-
 
 CREATE TABLE `passports`(
 `passport_id` INT NOT NULL PRIMARY KEY,
