@@ -120,7 +120,7 @@ VALUES
 (2,103);
 
 # SELF- REFERENCING
-
+#
 CREATE DATABASE `teachersInTheSchool`;
 CREATE TABLE `teachers`(
 `teacher_id` INT PRIMARY KEY AUTO_INCREMENT,
