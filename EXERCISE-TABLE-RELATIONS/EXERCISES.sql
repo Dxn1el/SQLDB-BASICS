@@ -145,4 +145,11 @@ FOREIGN KEY (`manager_id`)
 REFERENCES `teachers`(`teacher_id`);
 
 #University Database
-asd
+CREATE TABLE `subjects`(
+`subject_id` INT (11),
+`subject_name` VARCHAR(50)
+);
+
+CREATE TABLE ``
+
+
