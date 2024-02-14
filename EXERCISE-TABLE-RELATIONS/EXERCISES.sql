@@ -182,7 +182,7 @@ ADD CONSTRAINT fk_students
 FOREIGN KEY (`student_id`)
 REFERENCES `students`(`student_id`);
 
-# relationships between students and majors
+# relationships between students and majors -> FK majors
 
 ALTER TABLE`students`
 ADD CONSTRAINT fk_majors
