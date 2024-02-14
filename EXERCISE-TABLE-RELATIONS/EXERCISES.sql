@@ -177,3 +177,16 @@ CREATE TABLE `students`(
 
 # relationship between payments and students -> FK payments
 
+ALTER TABLE `payments`
+ADD CONSTRAINT fk_students
+FOREIGN KEY (`student_id`)
+REFERENCES `students`(`student_id`);
+
+# relationships between students and majors
+
+ALTER TABLE`students`
+ADD CONSTRAINT fk_majors
+FOREIGN KEY (`major_id`)
+REFERENCES `majors`(`major_id`);
+
+# 
