@@ -12,3 +12,7 @@ ORDER BY e.employee_id
 LIMIT 5;
 
 #HIGHEST SALARY COUNT
+SELECT COUNT(*) FROM employees as e
+WHERE e.salary>(
+SELECT AVG(e1.salary) FROM employees as e1
+);
