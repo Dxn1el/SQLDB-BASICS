@@ -15,4 +15,7 @@ limit 5;
 #address_text
 #Sort the result by first_name in ascending order then by last_name. Select first 5 employees.
 
-SELECT employees.first_name,employees.last_name,towns.name, addresses.address_text
+SELECT e.first_name,e.last_name,t.name, a.address_text
+FROM employees as e
+JOIN addresses as a ON e.address_id = a.address_id
+JOIN towns as t ON a.town_id = t.town_id;
