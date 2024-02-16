@@ -6,3 +6,13 @@ INNER JOIN addresses as a ON e.address_id = a.address_id
 ORDER BY address_id asc
 limit 5;
 
+# Addresses with Towns
+
+#Write a query that selects:
+# first_name
+#last_name
+#town
+#address_text
+#Sort the result by first_name in ascending order then by last_name. Select first 5 employees.
+
+SELECT employees.first_name,employees.last_name,towns.name, addresses.address_text
