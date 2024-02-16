@@ -89,9 +89,17 @@ WHERE e1.manager_id = m.employee_id AND e1.manager_id IN (3,7)
 ORDER BY e1.first_name;
 
 #Employee Summary
+SELECT
+    e.employee_id,
+    concat( e.first_name,' ', e.last_name) AS 'employee_name',
+    concat(m.first_name,' ' ,m.last_name) as 'manager_name',
+    d.name
+FROM employees as e
+JOIN employees as m on e.manager_id = m.employee_id
+JOIN departments as d on e.department_id = d.department_id
+ORDER BY e.employee_id
+LIMIT 5;;
 
-
-
-
+# MIN AVERAGE SALARY
 
 
