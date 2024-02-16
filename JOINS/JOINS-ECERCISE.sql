@@ -18,13 +18,29 @@ LIMIT 5;
 
 # SALES EMPLOYEE
 
-SELECT e.employee_id, e.first_name, e.last_name,d.name
+SELECT e.employee_id, e.first_name, e.last_name, d.name
 FROM employees AS e
          JOIN departments as d On e.department_id = d.department_id
 WHERE d.name = 'sales'
 ORDER BY e.employee_id DESC;
 
-#EMPLOYEE DEPARTMENTS
+#Employee Department
+
+SELECT e.employee_id,
+       e.first_name,
+       e.salary,
+       d.name
+FROM employees AS e
+         JOIN departments as d ON e.department_id = d.department_id
+
+#Filter only employees with salary higher than 15000.
+# Return the first 5 rows sorted by department_id in descending order.
+WHERE e.salary > 14999
+order by d.department_id DESC
+limit 5
+;
+
+#Employees Without Project
 
 
 
