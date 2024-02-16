@@ -51,6 +51,13 @@ ORDER BY e.employee_id DESC
 Limit 3;
 
 #Employees Hired After
+SELECT  e.first_name, e.last_name,e.hire_date, d.name as  dept_name
+FROM employees AS e
+JOIN departments as d ON e.department_id = d.department_id
+WHERE hire_date>'1999/01/01' AND (d.name = 'finance' OR d.name='sales')
+ORDER BY e.hire_date ASC;
+
+#Employees with Project
 
 
 
