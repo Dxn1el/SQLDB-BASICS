@@ -60,9 +60,9 @@ ORDER BY e.hire_date ASC;
 
 #Employees with Project
 
-SELECT e.employee_id,e.first_name, p.name
+SELECT e.employee_id, e.first_name, p.name
 FROM employees as e
-          JOIN employees_projects as ep ON e.employee_id = ep.employee_id
+         JOIN employees_projects as ep ON e.employee_id = ep.employee_id
          JOIN projects as p on ep.project_id = p.project_id
 #Filter only employees with a project, which has started after 13.08.2002 and it is still ongoing (no end date).
 WHERE DATE(start_date) > '2002-08-13 00:00:00'
@@ -72,6 +72,16 @@ ORDER BY e.first_name, p.name
 LIMIT 5;
 
 #Employee 24
+SELECT e.employee_id,
+       first_name,
+       IF(YEAR(p.start_date) >= 2005, NULL, p.name) as project_name
+FROM employees e
+         JOIN employees_projects ep ON e.employee_id = ep.employee_id
+         JOIN projects p ON ep.project_id = p.project_id
+WHERE e.employee_id = 24
+ORDER BY project_name;
+
+#
 
 
 
