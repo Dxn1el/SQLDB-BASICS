@@ -42,5 +42,16 @@ limit 5
 
 #Employees Without Project
 
+SELECT e.employee_id,
+       e.first_name
+from employees as e
+LEFT JOIN employees_projects as p ON e.employee_id = p.project_id
+WHERE project_id IS NULL
+ORDER BY e.employee_id DESC
+Limit 3;
+
+#Employees Hired After
+
+
 
 
