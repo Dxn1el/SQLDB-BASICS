@@ -83,6 +83,14 @@ ORDER BY project_name;
 
 #Employee Manager
 
+SELECT e1.employee_id, e1.first_name, e1.manager_id, m.first_name
+FROM employees e1, employees m
+WHERE e1.manager_id = m.employee_id AND e1.manager_id IN (3,7)
+ORDER BY e1.first_name;
+
+#Employee Summary
+
+
 
 
 
