@@ -1,5 +1,4 @@
 #EMPLOYEE ADDRESS
-
 SELECT e.employee_id, e.job_title, e.address_id, a.address_text
 FROM employees as e
          INNER JOIN addresses as a ON e.address_id = a.address_id
@@ -84,22 +83,48 @@ ORDER BY project_name;
 #Employee Manager
 
 SELECT e1.employee_id, e1.first_name, e1.manager_id, m.first_name
-FROM employees e1, employees m
-WHERE e1.manager_id = m.employee_id AND e1.manager_id IN (3,7)
+FROM employees e1,
+     employees m
+WHERE e1.manager_id = m.employee_id
+  AND e1.manager_id IN (3, 7)
 ORDER BY e1.first_name;
 
 #Employee Summary
-SELECT
-    e.employee_id,
-    concat( e.first_name,' ', e.last_name) AS 'employee_name',
-    concat(m.first_name,' ' ,m.last_name) as 'manager_name',
-    d.name
+SELECT e.employee_id,
+       concat(e.first_name, ' ', e.last_name) AS 'employee_name',
+       concat(m.first_name, ' ', m.last_name) as 'manager_name',
+       d.name
 FROM employees as e
-JOIN employees as m on e.manager_id = m.employee_id
-JOIN departments as d on e.department_id = d.department_id
+         JOIN employees as m on e.manager_id = m.employee_id
+         JOIN departments as d on e.department_id = d.department_id
 ORDER BY e.employee_id
 LIMIT 5;;
 
 # MIN AVERAGE SALARY
+SELECT avg(salary) as 'min_average_salary'
+from employees
+GROUP BY department_id
+ORDER BY min_average_salary
+LIMIT 1;
 
+#Highest Peaks in Bulgaria
+USE geography;
+SELECT c.country_code
+     , m.mountain_range
+     , p.peak_name
+     , p.elevation
+FROM countries as c
+         JOIN mountains_countries as mc on c.country_code = mc.country_code
+         JOIN mountains as m on mc.mountain_id = m.id
+         JOIN peaks as p on m.id = p.mountain_id
+WHERE c.country_name = 'Bulgaria'
+  AND elevation > 2835
+#Filter all peaks in Bulgaria with elevation over 2835. Return all rows sorted by elevation in descending order. ;
+ORDER BY elevation desc;
 
+# Count Mountain Ranges
+SELECT country_code, count(mountain_range) FROM mountains_countries as mc
+JOIN mountains as m ON mc.mountain_id = m.id
+WHERE mc.country_code IN ('BG','US','RU')
+GROUP BY mc.country_code
+ORDER BY mc.country_code asc;
