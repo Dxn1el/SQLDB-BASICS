@@ -123,8 +123,10 @@ WHERE c.country_name = 'Bulgaria'
 ORDER BY elevation desc;
 
 # Count Mountain Ranges
-SELECT country_code, count(mountain_range) FROM mountains_countries as mc
+SELECT country_code, count(mountain_range)as mrc FROM mountains_countries as mc
 JOIN mountains as m ON mc.mountain_id = m.id
 WHERE mc.country_code IN ('BG','US','RU')
 GROUP BY mc.country_code
-ORDER BY mc.country_code asc;
+ORDER BY mrc desc;
+
+#COUNTRIES WITH RIVERS
