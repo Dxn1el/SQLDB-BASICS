@@ -130,3 +130,11 @@ GROUP BY mc.country_code
 ORDER BY mrc desc;
 
 #COUNTRIES WITH RIVERS
+SELECT country_name,river_name FROM countries as c
+
+LEFT JOIN countries_rivers as cr ON c.country_code = cr.country_code
+Left JOIN rivers as r ON cr.river_id = r.id
+WHERE c.continent_code LIKE 'AF'
+ORDER BY country_name ASC;
+
+
