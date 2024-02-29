@@ -135,6 +135,23 @@ SELECT country_name,river_name FROM countries as c
 LEFT JOIN countries_rivers as cr ON c.country_code = cr.country_code
 Left JOIN rivers as r ON cr.river_id = r.id
 WHERE c.continent_code LIKE 'AF'
-ORDER BY country_name ASC;
+ORDER BY country_name ASC
+LIMIT  5;
+
+#Countries Without Any Mountains
+SELECT count(*) FROM countries as c
+LEFT JOIN mountains_countries as mc USING (country_code)
+LEFT JOIN mountains as m on mc.mountain_id = m.id
+WHERE m.id IS NULL;
+
+#Highest Peak and Longest River by Country
+SELECT country_name,max(p.elevation) AS HPE ,max(r.length) AS LR FROM countries as c
+LEFT JOIN mountains_countries as mc USING(country_code)
+LEFT JOIN peaks as p USING (mountain_id)
+LEFT JOIN countries_rivers as cr USING (country_code)
+LEFT JOIN rivers as r ON cr.river_id = r.id
+GROUP BY c.country_name
+ORDER BY HPE desc, c.country_name asc
+LIMIT 5;
 
 
