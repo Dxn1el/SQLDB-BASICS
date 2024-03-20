@@ -63,4 +63,12 @@ BEGIN
 end;
 
 #Employees by Salary Level
-CREATE FUNCTION  usp_get_employees_by_salary_level()
+CREATE PROCEDURE usp_get_employees_by_salary_level(salary_lever VARCHAR(10))
+begin
+    SELECT first_name, last_name from employees
+    WHERE ufn_get_salary_level(salary) = salary_lever
+    ORDER BY first_name, last_name;
+    end;
+
+#Define Function
+
